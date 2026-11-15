@@ -1,0 +1,53 @@
+# =====================================================================
+# RoutePulse - .gitignore
+# =====================================================================
+
+# --- Configuración local con credenciales (NUNCA se sube) ---
+# config/config.example.php SÍ se sube (es la plantilla)
+config/config.php
+.env
+.env.*
+
+# --- Storage: se suben las carpetas (con .gitkeep) pero no su contenido ---
+storage/uploads/*
+storage/logs/*
+storage/cache/*
+!storage/uploads/.gitkeep
+!storage/logs/.gitkeep
+!storage/cache/.gitkeep
+
+# --- Logs y archivos temporales ---
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# --- Copias de seguridad de la base de datos (no el esquema ni el seed) ---
+backup*.sql
+*_backup.sql
+dump*.sql
+*.sql.gz
+
+# --- Dependencias que se pudieran instalar por npm (las librerías van copiadas en public/assets/vendor) ---
+node_modules/
+public/assets/vendor/**/node_modules/
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editores e IDE ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --- Archivos comprimidos (no se suben al repositorio) ---
+*.zip
+*.rar
+*.7z
+
+# --- XAMPP / entorno local ---
+php_errors.log

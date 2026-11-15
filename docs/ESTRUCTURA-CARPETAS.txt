@@ -1,0 +1,139 @@
+=====================================================================
+ RoutePulse - ESTRUCTURA PRINCIPAL DE CARPETAS DEL PROYECTO
+=====================================================================
+ Esta es la estructura del repositorio que van a programar (no la del
+ .zip de especificación). Detalle completo en 00-base/02-estructura-proyecto.md
+
+ Responsables:  [C] Carlos   [J] Juan   [G] Guanda   [K] Karoline
+ Módulos:       M1 Despacho y rutas        M5 Portal del cliente
+                M2 Rastreo GPS             M6 Dashboard
+                M3 Trazabilidad y HUBs     M7 Integraciones
+                M4 App del conductor       M8 Seguridad y usuarios
+=====================================================================
+
+
+routepulse/
+|
+|-- public/                          <- DocumentRoot (lo único accesible por URL)
+|   |-- index.php                    redirige según el rol .................. [C] M8
+|   |-- login.php                    pantalla de acceso ..................... [C] M8
+|   |-- cambiar_password.php         ..................................... [C] M8
+|   |-- t.php                        portal de seguimiento (/t/{token}) ..... [K] M5
+|   |-- .htaccess                    reescritura /t/{token} y cabeceras ..... [C]
+|   |
+|   |-- api/                         endpoints JSON: /api/<recurso>/<accion>.php
+|   |   |-- auth/                    login, logout, me, csrf ............... [C] M8
+|   |   |-- usuarios/                ..................................... [C] M8
+|   |   |-- auditoria/               ..................................... [C] M8
+|   |   |-- configuracion/           ..................................... [C] M8
+|   |   |-- paquetes/                ..................................... [J] M3
+|   |   |-- incidencias/             ..................................... [J] M3
+|   |   |-- hubs/                    ..................................... [J] M3
+|   |   |-- vehiculos/               ..................................... [J] M1
+|   |   |-- conductores/             ..................................... [J] M1
+|   |   |-- zonas/                   ..................................... [J] M1
+|   |   |-- rutas/                   ..................................... [J] M1
+|   |   |-- gps/                     ..................................... [G] M2
+|   |   |-- conductor/               hoja de ruta, entregas, OTP ........... [G] M4
+|   |   |-- archivos/                ver firmas y fotos .................... [G] M4
+|   |   |-- tracking/                estado y reprogramar (público) ........ [K] M5
+|   |   |-- kpi/                     indicadores y reportes ................ [K] M6
+|   |   |-- integraciones/           ..................................... [C] M7
+|   |   `-- notificaciones/          ..................................... [C] M7
+|   |
+|   |-- webhooks/                    shopify, woocommerce, magento, ML ...... [C] M7
+|   |
+|   |-- admin/                       pantallas de administración
+|   |   |-- usuarios.php             ..................................... [K] (endpoints de [C])
+|   |   |-- auditoria.php            ..................................... [K] (endpoints de [C])
+|   |   |-- configuracion.php        ..................................... [K] (endpoints de [C])
+|   |   |-- integraciones.php        ..................................... [C] M7
+|   |   |-- notificaciones.php       ..................................... [C] M7
+|   |   |-- webhooks.php             ..................................... [C] M7
+|   |   `-- log_api.php              ..................................... [C] M7
+|   |
+|   |-- hub/                         paquetes, escaneo, etiquetas, incidencias [J] M3
+|   |-- despacho/                    vehículos, conductores, zonas, rutas ... [J] M1
+|   |-- monitor/                     flota en vivo y playback ............... [G] M2
+|   |-- conductor/                   PWA: index, parada, manifest, sw.js .... [G] M4
+|   |-- gerencia/                    dashboard, mapa de calor, reportes ..... [K] M6
+|   |
+|   `-- assets/
+|       |-- css/                     app.css, estados.css, <modulo>.css
+|       |-- js/                      api.js, ui.js ......................... [C]
+|       |                            gps_tracker.js, mapa_util.js .......... [G]
+|       |                            m1/ m2/ ... m8/ (un JS por pantalla)
+|       |-- img/
+|       `-- vendor/                  bootstrap, leaflet, leaflet-draw, leaflet-heat,
+|                                    chartjs, qrcodejs, jsbarcode, signature_pad
+|
+|-- app/                             lógica (fuera del alcance web)
+|   |-- core/                        núcleo compartido ..................... [C]
+|   |   |-- bootstrap.php   db.php   response.php   input.php
+|   |   |-- auth.php        csrf.php config.php     logger.php
+|   |   |-- geo.php         layout.php errores.php
+|   |
+|   |-- services/                    funciones públicas de cada módulo
+|   |   |-- paquete_service.php ................................ [J] M3
+|   |   |-- zona_service.php, ruta_service.php, conductor_service.php [J] M1
+|   |   |-- gps_service.php .................................... [G] M2
+|   |   |-- entrega_service.php, otp_service.php, archivo_service.php [G] M4
+|   |   |-- tracking_service.php ............................... [K] M5
+|   |   |-- kpi_service.php .................................... [K] M6
+|   |   |-- notificacion_service.php, integracion_service.php,
+|   |   |   geo_proveedores_service.php ........................ [C] M7
+|   |   `-- usuario_service.php, auditoria_service.php,
+|   |       rate_limit_service.php ............................. [C] M8
+|   |
+|   |-- views/partials/             header.php, navbar.php, footer.php, mensajes.php [C]
+|   `-- lib/                        librerías de terceros (phpmailer/) ..... [C]
+|
+|-- config/
+|   |-- config.example.php           plantilla (versionada)
+|   `-- config.php                   credenciales y claves (NO se sube a Git)
+|
+|-- cron/                            scripts de línea de comandos
+|   |-- procesar_notificaciones.php  cada minuto ........................... [C] M7
+|   |-- reintentar_webhooks.php      cada 5 minutos ........................ [C] M7
+|   |-- recalcular_eta.php           cada minuto ........................... [G] M2
+|   `-- limpiar_gps.php              diario ................................ [G] M2
+|
+|-- database/
+|   |-- schema.sql                   esquema de 23 tablas (fuente de verdad)
+|   |-- seed.sql                     datos de prueba comunes
+|   `-- migraciones/                 cambios posteriores numerados
+|       `-- REGISTRO.md              anotar aquí cada migración
+|
+|-- storage/                         NO accesible por URL, NO se sube a Git
+|   |-- uploads/                     firmas y fotos de entrega
+|   |-- logs/                        app.log, notificaciones_simuladas.log, integraciones.log
+|   `-- cache/                       rate_limit/ (contadores), geocode/ (geocodificación)
+|
+|-- docs/                            esta especificación (README, 00-base, modulos, 99-integracion)
+|
+|-- tests/                           simular_gps.md, resultados.md (pruebas E2E)
+|
+|-- .gitignore
+`-- README.md
+
+
+=====================================================================
+ NOTAS
+=====================================================================
+ 1. Solo public/ es accesible desde el navegador. app/, config/, cron/,
+    database/ y storage/ quedan fuera del alcance web.
+
+ 2. Hosting compartido: si solo hay una carpeta pública (public_html),
+    el contenido de public/ va dentro de public_html/ y las demás
+    carpetas se colocan un nivel por encima.
+
+ 3. Cada persona modifica solo los archivos de sus módulos. Los de
+    app/core/, public/assets/js/api.js, ui.js y app/views/partials/
+    son de Carlos; cualquier cambio ahí se propone por pull request.
+
+ 4. Un endpoint = un archivo en public/api/<recurso>/<accion>.php. La
+    lógica de negocio vive en app/services/, no en el endpoint.
+
+ 5. Una pantalla = un archivo PHP en su carpeta (hub/, despacho/, etc.)
+    más un JS en public/assets/js/<modulo>/ que carga los datos por AJAX.
+=====================================================================
