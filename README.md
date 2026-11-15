@@ -98,42 +98,23 @@ El esquema tiene **23 tablas** (`database/schema.sql` es la fuente de verdad). C
 
 | Rama | Uso |
 |---|---|
-| `main` | Versión estable. Solo recibe de `develop` al cerrar un hito |
-| `develop` | Integración del trabajo de todos |
-| `feature/m<N>-<descripcion>` | Una rama por tarea, por ejemplo `feature/m3-paquete-crear` |
+| `main` | Versión estable e integración del trabajo de todos. Es la única rama compartida |
+| `carlos` | Rama personal de Carlos (núcleo, M8 Seguridad y usuarios, M7 Integraciones) |
+| `karoline` | Rama personal de Karoline (M5 Portal del cliente, M6 Dashboard, administración de M8) |
+| `juan` | Rama personal de Juan (M3 Trazabilidad y HUBs, M1 Despacho y rutas) |
+| `guanda` | Rama personal de Guanda (M2 Rastreo GPS, M4 App del conductor) |
+
+Cada integrante programa y prueba **únicamente en su rama personal**. No se crean ramas por tarea ni se sube directo a `main`.
 
 **Ciclo de cada tarea**
 
 ```bash
-git checkout develop
-git pull origin develop                      # traer lo último
-git checkout -b feature/m3-paquete-crear     # rama nueva
+git checkout carlos                          # ubicarse en la rama personal
+git pull origin carlos                       # traer lo último de la rama propia
 # ... programar y probar ...
 git add .
 git commit -m "[M3] Agrega paquete_crear con guía única"
-git push -u origin feature/m3-paquete-crear
-```
-
-Después, en GitHub se abre un **pull request hacia `develop`**, lo revisa otra persona y, al aprobarse, se hace *merge* y se borra la rama. Todos actualizan con `git pull origin develop`.
-
-**Revisión de código (rotación)**
-
-| Quien programa | Quien revisa |
-|---|---|
-| Karoline | Carlos (y Juan las consultas SQL de M6) |
-| Carlos | Guanda |
-| Juan | Carlos |
-| Guanda | Juan |
-
-**Reglas**
-
-- Nadie sube directo a `develop` ni a `main`.
-- Una tarea = una rama = un pull request pequeño.
-- Hacer `git pull origin develop` antes de empezar a trabajar cada día.
-- Mensajes de commit: `[M3] Mensaje corto` (módulo entre corchetes).
-- Nunca se suben claves, contraseñas ni `config/config.php`.
-- Los archivos de `app/core/` y `database/schema.sql` son de Carlos; los cambios se piden por pull request.
-- Un cambio de base de datos lleva su migración y el `schema.sql` actualizado **en el mismo pull request**.
+git push origin carlos
 
 ## Convenciones clave
 
