@@ -1,0 +1,9 @@
+# RoutePulse - esta carpeta NO debe ser accesible por URL.
+# Protege las instalaciones donde la raíz del proyecto queda dentro del servidor web (por ejemplo XAMPP en htdocs).
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

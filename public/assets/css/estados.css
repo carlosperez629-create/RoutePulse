@@ -1,0 +1,32 @@
+/* RoutePulse - Colores de estado (docs/00-base/09-guia-interfaz.md, sección 2).
+   El MISMO estado usa el MISMO color en todas las pantallas.
+   Uso: <span class="badge estado-en_transito">En tránsito</span>
+   (o ui.badgeEstado('en_transito') en JavaScript). */
+
+[class*="estado-"] { color: #fff; }
+
+/* Paquete */
+.estado-creado           { background-color: #6c757d; }
+.estado-ingresado_hub    { background-color: #0dcaf0; color: #212529; }
+.estado-en_clasificacion { background-color: #0d6efd; }
+.estado-asignado_ruta    { background-color: #ffc107; color: #212529; }
+.estado-en_transito      { background-color: #fd7e14; }
+.estado-entregado        { background-color: #198754; }
+.estado-incidencia       { background-color: #dc3545; }
+.estado-cancelado        { background-color: #343a40; }
+.estado-devuelto         { background-color: #6f42c1; }
+
+/* Ruta */
+.estado-borrador         { background-color: #6c757d; }
+.estado-planificada      { background-color: #0d6efd; }
+.estado-en_curso         { background-color: #fd7e14; }
+.estado-completada       { background-color: #198754; }
+.estado-cancelada        { background-color: #343a40; }
+
+/* Parada */
+.estado-pendiente        { background-color: #6c757d; }
+.estado-en_camino        { background-color: #fd7e14; }
+.estado-llegado          { background-color: #0dcaf0; color: #212529; }
+.estado-entregada        { background-color: #198754; }
+.estado-fallida          { background-color: #dc3545; }
+.estado-omitida          { background-color: #6c757d; }

@@ -1,0 +1,24 @@
+# RoutePulse - public/.htaccess
+# Requiere mod_rewrite. Mantener este archivo dentro de public/.
+
+AddDefaultCharset UTF-8
+
+# No listar el contenido de las carpetas.
+Options -Indexes
+
+# Enlace de seguimiento del cliente: /t/{token de 32 caracteres} -> t.php?t={token}
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^t/([A-Za-z0-9]{32})/?$ t.php?t=$1 [L,QSA]
+</IfModule>
+
+# Bloquear archivos ocultos (.htaccess, .gitkeep, .env...).
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

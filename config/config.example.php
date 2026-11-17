@@ -9,6 +9,9 @@ return [
         'entorno'       => 'dev',                            // dev | prod
         'url'           => 'http://localhost/routepulse/public', // sin barra final
         'clave_secreta' => 'CAMBIAR_por_bin2hex_random_bytes_32', // firma del OTP (HMAC)
+        // true SOLO si el servidor está detrás de un proxy/balanceador de confianza que envía
+        // X-Forwarded-For y X-Forwarded-Proto. En cualquier otro caso dejar en false.
+        'proxy_confiable' => false,
     ],
     'db' => [
         'host'    => '127.0.0.1',
