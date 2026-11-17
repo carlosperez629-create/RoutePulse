@@ -1,0 +1,31 @@
+/*
+ * RoutePulse - colores de estado (docs/00-base/09-guia-interfaz.md, sección 2).
+ * El mismo estado usa el mismo color en TODAS las pantallas. Uso: class="estado-<estado>".
+ * Define el color de fondo, el color del texto legible y la variable --estado-color.
+ */
+
+/* Estados de paquete */
+.estado-creado          { --estado-color: #6c757d; background-color: #6c757d; color: #fff; }
+.estado-ingresado_hub   { --estado-color: #0dcaf0; background-color: #0dcaf0; color: #000; }
+.estado-en_clasificacion{ --estado-color: #0d6efd; background-color: #0d6efd; color: #fff; }
+.estado-asignado_ruta   { --estado-color: #ffc107; background-color: #ffc107; color: #000; }
+.estado-en_transito     { --estado-color: #fd7e14; background-color: #fd7e14; color: #000; }
+.estado-entregado       { --estado-color: #198754; background-color: #198754; color: #fff; }
+.estado-incidencia      { --estado-color: #dc3545; background-color: #dc3545; color: #fff; }
+.estado-cancelado       { --estado-color: #343a40; background-color: #343a40; color: #fff; }
+.estado-devuelto        { --estado-color: #6f42c1; background-color: #6f42c1; color: #fff; }
+
+/* Estados de ruta */
+.estado-borrador        { --estado-color: #6c757d; background-color: #6c757d; color: #fff; }
+.estado-planificada     { --estado-color: #0d6efd; background-color: #0d6efd; color: #fff; }
+.estado-en_curso        { --estado-color: #fd7e14; background-color: #fd7e14; color: #000; }
+.estado-completada      { --estado-color: #198754; background-color: #198754; color: #fff; }
+.estado-cancelada       { --estado-color: #343a40; background-color: #343a40; color: #fff; }
+
+/* Estados de parada */
+.estado-pendiente       { --estado-color: #6c757d; background-color: #6c757d; color: #fff; }
+.estado-en_camino       { --estado-color: #fd7e14; background-color: #fd7e14; color: #000; }
+.estado-llegado         { --estado-color: #0dcaf0; background-color: #0dcaf0; color: #000; }
+.estado-entregada       { --estado-color: #198754; background-color: #198754; color: #fff; }
+.estado-fallida         { --estado-color: #dc3545; background-color: #dc3545; color: #fff; }
+.estado-omitida         { --estado-color: #6c757d; background-color: #6c757d; color: #fff; }
