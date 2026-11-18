@@ -1,0 +1,57 @@
+/* M3 Trazabilidad y HUBs (Juan). Los colores de estado vienen de estados.css (clase estado-<estado>). */
+.rp-estado { font-weight: 500; }
+.rp-linea-tiempo { list-style: none; margin: 0; padding: 0 0 0 1.25rem; border-left: 2px solid #dee2e6; }
+.rp-linea-tiempo > li { position: relative; padding: 0 0 1rem 1rem; }
+.rp-linea-tiempo > li::before { content: ""; position: absolute; left: -1.7rem; top: .25rem; width: .8rem; height: .8rem; border-radius: 50%; background: #6c757d; border: 2px solid #fff; box-shadow: 0 0 0 1px #dee2e6; }
+.rp-linea-tiempo > li.rp-lt-creado::before { background: #6c757d; }
+.rp-linea-tiempo > li.rp-lt-ingresado_hub::before { background: #0dcaf0; }
+.rp-linea-tiempo > li.rp-lt-en_clasificacion::before { background: #0d6efd; }
+.rp-linea-tiempo > li.rp-lt-asignado_ruta::before { background: #ffc107; }
+.rp-linea-tiempo > li.rp-lt-en_transito::before { background: #fd7e14; }
+.rp-linea-tiempo > li.rp-lt-entregado::before { background: #198754; }
+.rp-linea-tiempo > li.rp-lt-incidencia::before { background: #dc3545; }
+.rp-linea-tiempo > li.rp-lt-cancelado::before { background: #343a40; }
+.rp-linea-tiempo > li.rp-lt-devuelto::before { background: #6f42c1; }
+.rp-mapa { height: 340px; border-radius: .375rem; border: 1px solid #dee2e6; }
+.rp-escaneo-input { font-size: 1.5rem; letter-spacing: .05em; }
+.rp-escaneo-ok { background: #d1e7dd; }
+.rp-escaneo-error { background: #f8d7da; }
+.rp-tabla-scroll { overflow-x: auto; }
+.rp-copiable { cursor: pointer; }
+tr.rp-fila-incidencia > td:first-child { border-left: 4px solid #dc3545; }
+
+/* ---- Etiqueta 100 x 150 mm (impresora térmica) ---- */
+.rp-etiquetas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.rp-etiqueta { width: 100mm; height: 150mm; box-sizing: border-box; padding: 4mm; background: #fff; color: #000; border: 1px solid #adb5bd; font-family: Arial, Helvetica, sans-serif; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; break-after: page; }
+.rp-etiqueta-cabecera { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #000; padding-bottom: 2mm; }
+.rp-etiqueta-logo { font-weight: 800; font-size: 6mm; letter-spacing: .3mm; }
+.rp-etiqueta-sello { border: 1.2mm solid #000; padding: .5mm 2.5mm; font-weight: 800; font-size: 5mm; }
+.rp-etiqueta-guia { font-size: 6.2mm; font-weight: 800; text-align: center; margin: 2mm 0 1mm; letter-spacing: .2mm; }
+.rp-etiqueta-codigos { display: flex; align-items: center; justify-content: space-between; gap: 3mm; }
+.rp-etiqueta-qr { width: 32mm; height: 32mm; flex: 0 0 32mm; }
+.rp-etiqueta-qr img, .rp-etiqueta-qr canvas { width: 32mm !important; height: 32mm !important; }
+.rp-etiqueta-barras { flex: 1 1 auto; min-width: 0; text-align: center; }
+.rp-etiqueta-barras svg { width: 100%; height: 24mm; }
+.rp-etiqueta-destino { border-top: 2px solid #000; margin-top: 2mm; padding-top: 2mm; flex: 1 1 auto; }
+.rp-etiqueta-destino .rp-et-nombre { font-size: 6mm; font-weight: 700; }
+.rp-etiqueta-destino .rp-et-dir { font-size: 4.6mm; margin-top: 1mm; }
+.rp-etiqueta-destino .rp-et-ciudad { font-size: 4.2mm; margin-top: 1mm; }
+.rp-etiqueta-pie { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #000; padding-top: 1.5mm; font-size: 3.6mm; }
+.rp-etiqueta-cod { border: 1mm solid #000; padding: 1mm 2mm; font-weight: 800; font-size: 4.4mm; }
+@media print {
+    @page { size: 100mm 150mm; margin: 0; }
+    html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+    body * { visibility: hidden; }
+    .rp-etiquetas, .rp-etiquetas * { visibility: visible; }
+    .rp-etiquetas { position: absolute; left: 0; top: 0; display: block; }
+    .rp-etiqueta { border: none; margin: 0; }
+    .rp-no-imprimir { display: none !important; }
+}
+
+/* Estados que estados.css (núcleo) no define: incidencia y conductor. Los demás vienen de estados.css. */
+.estado-abierta { background-color: #dc3545; }
+.estado-reprogramada { background-color: #0dcaf0; color: #212529; }
+.estado-devuelta { background-color: #6f42c1; }
+.estado-disponible { background-color: #198754; }
+.estado-en_ruta { background-color: #fd7e14; }
+.estado-inactivo { background-color: #6c757d; }
