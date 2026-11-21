@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0f766e">
+    <title>Sin conexión · RoutePulse Conductor</title>
+    <style>
+        :root { color-scheme: light; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: #f5f6f8;
+            color: #1f2933;
+            font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+        main {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .12);
+            text-align: center;
+        }
+        .icono {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #e6fffb;
+            color: #0f766e;
+            font-size: 32px;
+        }
+        h1 { margin: 0 0 8px; font-size: 1.35rem; }
+        p { margin: 0 0 20px; color: #52606d; }
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 20px;
+            border-radius: 10px;
+            background: #0f766e;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        small { display: block; margin-top: 16px; color: #7b8794; }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="icono" aria-hidden="true">⌁</div>
+        <h1>Sin conexión</h1>
+        <p>No pudimos cargar esta pantalla y no está guardada en el teléfono. Revisa tu conexión e inténtalo de nuevo.</p>
+        <a href="./">Volver a mi ruta</a>
+        <small>Las entregas que ya registraste se sincronizarán al recuperar la señal.</small>
+    </main>
+</body>
+</html>

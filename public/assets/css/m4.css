@@ -1,0 +1,173 @@
+/* RoutePulse - M4. App del conductor (mobile first, 360 px). */
+
+.rp-m4 {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+.rp-m4 .progress {
+    height: .5rem;
+}
+
+.rp-m4-cabecera {
+    border: 0;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+}
+
+.rp-m4-parada-actual {
+    border-width: 2px;
+    border-left-width: 6px;
+}
+
+.rp-m4-orden {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #0f766e;
+    color: #fff;
+    font-weight: 600;
+    font-size: .875rem;
+}
+
+.rp-m4-lista .rp-m4-parada {
+    padding: .75rem .9rem;
+}
+
+.rp-m4-lista .rp-m4-parada:active {
+    background-color: #e9ecef;
+}
+
+.min-w-0 {
+    min-width: 0;
+}
+
+/* Panel de estado del telAcfono: se abre sobre la barra inferior. */
+
+.rp-m4-estado {
+    position: fixed;
+    z-index: 1035;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 720px;
+    padding: .5rem .75rem;
+}
+
+.rp-m4-estado .card {
+    box-shadow: 0 -2px 12px rgba(15, 23, 42, .12);
+}
+
+/* Barra inferior fija con "Ruta" y "Estado". */
+
+.rp-m4-barra {
+    position: fixed;
+    z-index: 1040;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 100%;
+    max-width: 720px;
+    min-height: 64px;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: #fff;
+    border-top: 1px solid #dee2e6;
+    box-shadow: 0 -1px 6px rgba(15, 23, 42, .06);
+}
+
+.rp-m4-barra__item {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .15rem;
+    min-height: 56px;
+    padding: .35rem .5rem;
+    border: 0;
+    background: transparent;
+    color: #6c757d;
+    font: inherit;
+    font-size: .75rem;
+    text-decoration: none;
+}
+
+.rp-m4-barra__item i {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.rp-m4-barra__item.active,
+.rp-m4-barra__item[aria-current="page"] {
+    color: #0f766e;
+    font-weight: 600;
+}
+
+/* Detalle de la parada */
+
+#parada-detalle dl {
+    font-size: .9rem;
+}
+
+#parada-detalle dd {
+    max-width: 62%;
+    overflow-wrap: anywhere;
+}
+
+#parada-contenido form.card {
+    border: 0;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+}
+
+/* Firma en pantalla */
+
+.rp-firma {
+    position: relative;
+    width: 100%;
+    border: 1px dashed #adb5bd;
+    border-radius: .5rem;
+    background: #fff;
+    overflow: hidden;
+}
+
+.rp-firma canvas {
+    display: block;
+    width: 100%;
+    height: 220px;
+    touch-action: none;
+}
+
+/* Vista previa de la foto */
+
+.rp-foto-previa {
+    display: block;
+    width: 100%;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: .5rem;
+    border: 1px solid #dee2e6;
+}
+
+/* Ajustes de teclado y safe area en iOS */
+
+.rp-m4 input,
+.rp-m4 select,
+.rp-m4 textarea {
+    font-size: 16px; /* evita el zoom automAtico de iOS */
+}
+
+.rp-m4 textarea {
+    resize: vertical;
+}
+
+@media (max-width: 359px) {
+    .rp-m4-barra__item {
+        font-size: .68rem;
+    }
+}

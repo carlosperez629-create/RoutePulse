@@ -1,0 +1,44 @@
+{
+  "id": "./",
+  "name": "RoutePulse Conductor",
+  "short_name": "RoutePulse",
+  "description": "Hoja de ruta, entregas y GPS del conductor de RoutePulse.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#f5f6f8",
+  "theme_color": "#0f766e",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "../assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "../assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mi ruta",
+      "short_name": "Ruta",
+      "url": "./",
+      "icons": [{ "src": "../assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
