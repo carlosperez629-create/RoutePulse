@@ -1,0 +1,27 @@
+# RoutePulse - .htaccess raíz
+# Defensa para instalaciones donde el DocumentRoot apunta a la raíz del proyecto
+# en lugar de public/. Si el DocumentRoot ya es public/, este archivo no se lee.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Nunca permitir acceso directo a carpetas internas.
+    RewriteRule ^(?:app|config|cron|database|docs|storage|tests)(?:/|$) - [F,L,NC]
+
+    # Si la raíz del proyecto es el DocumentRoot, servir todo desde public/.
+    RewriteCond %{REQUEST_URI} !/public(/|$)
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Bloquear archivos ocultos (.htaccess, .git, .env...).
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

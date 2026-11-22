@@ -1,0 +1,40 @@
+/* RoutePulse - ajustes globales. Estilos propios de cada módulo van en assets/css/<modulo>.css */
+
+body {
+    background-color: #f5f6f8;
+}
+
+.rp-contenido {
+    min-height: calc(100vh - 56px);
+}
+
+/* Botones y campos cómodos al tacto (conductor y portal del cliente). */
+.btn-touch {
+    min-height: 44px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+/* Contenedor de mapas Leaflet: asignar una altura al usarlo. */
+.rp-mapa {
+    width: 100%;
+    min-height: 300px;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+/* Tablas con desplazamiento horizontal en pantallas pequeñas. */
+.rp-tabla-scroll {
+    overflow-x: auto;
+}
+
+/* Insignias de estado: mismo tamaño de letra y sin saltos de línea. */
+.badge[class*="estado-"] {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Mensajes de error de campos (los agrega ui.marcarErrores). */
+.invalid-feedback[data-rp-error] {
+    display: block;
+}

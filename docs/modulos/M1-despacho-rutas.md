@@ -120,7 +120,7 @@ Solo rutas `planificada` o `en_curso`. Las paradas resueltas (`entregada`, `fall
 
 ## 8. Datos de prueba (seed)
 
-Hay 2 zonas, 3 vehículos, 2 conductores, la ruta 1 `en_curso` (conductor 1, 5 paradas: 1 entregada, 1 fallida, 1 en camino, 2 pendientes) y la ruta 2 `planificada` (conductor 2, 2 paradas). Los paquetes 3 y 4 están `en_clasificacion` y sirven para probar `ruta_generar` (el 3 en Zona Norte, el 4 en Zona Sur). Para trabajar sin esperar a otros módulos, usar `ruta_generar` con los servicios de M7 en modo simulado.
+Hay 2 zonas, 3 vehículos, 2 conductores, la ruta 1 `en_curso` (conductor 1, 5 paradas: 1 entregada, 1 fallida, 1 en camino, 2 pendientes) y la ruta 2 `planificada` (conductor 2, 2 paradas). Los paquetes 3 y 4 están `en_clasificacion` y sirven para probar `ruta_generar` (el 3 en San Francisco Norte, el 4 en San Francisco Sur). Para trabajar sin esperar a otros módulos, usar `ruta_generar` con los servicios de M7 en modo simulado.
 
 ## 9. Criterios de aceptación
 
