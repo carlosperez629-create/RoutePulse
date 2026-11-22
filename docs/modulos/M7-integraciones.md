@@ -33,7 +33,7 @@ Responsable: **Carlos** (también hace el núcleo y M8). Servicios: `notificacio
 | Página | Contenido |
 |---|---|
 | `admin/integraciones.php` | Tarjeta por integración: nombre, tipo, activa (interruptor), modo simulado (interruptor), estado de la última llamada. Acciones: Editar ajustes (JSON no secreto), **Probar conexión**, **Generar API key** (solo la de ERP/WMS; se muestra una única vez), ver URL del webhook (`https://.../webhooks/<codigo>.php`) y el secreto configurado (solo si existe, sin mostrarlo) |
-| `admin/notificaciones.php` (A, D) | Tabla de la cola e historial: fecha, paquete (enlace), tipo, canal, destino (enmascarado: `+57•••••1234`), estado, intentos, error. Filtros por estado, tipo y fechas. Botón **Reenviar** en las fallidas |
+| `admin/notificaciones.php` (A, D) | Tabla de la cola e historial: fecha, paquete (enlace), tipo, canal, destino (enmascarado: `+58•••••1234`), estado, intentos, error. Filtros por estado, tipo y fechas. Botón **Reenviar** en las fallidas |
 | `admin/webhooks.php` | Eventos recibidos: fecha, integración, evento externo, estado, paquete creado, error. Botón **Reprocesar** en los de estado `error` |
 | `admin/log_api.php` | Últimas llamadas entrantes y salientes, leídas de `storage/logs/integraciones.log`, con duración y código HTTP |
 
@@ -47,9 +47,9 @@ Todo origen externo se convierte a esta forma antes de llamar a `paquete_crear`:
 
 ```json
 { "origen_externo_id": "1234567890",
-  "remitente_nombre": "Tienda Demo", "remitente_telefono": "+570000009999",
-  "destinatario_nombre": "Ana Torres", "destinatario_telefono": "+573001112233", "destinatario_email": "ana@correo.test",
-  "direccion_entrega": "Calle 1 #10-20", "referencia": "Apto 301", "ciudad": "Ciudad Ejemplo", "codigo_postal": "110111",
+  "remitente_nombre": "Tienda Demo", "remitente_telefono": "+584120009999",
+  "destinatario_nombre": "Ana Torres", "destinatario_telefono": "+584121112233", "destinatario_email": "ana@correo.test",
+  "direccion_entrega": "Calle 1 #10-20", "referencia": "Apto 301", "ciudad": "San Francisco", "codigo_postal": "4001",
   "lat": null, "lng": null,
   "peso_kg": 1.2, "volumen_m3": 0.02,
   "cobro_contra_entrega": 0, "moneda": "USD",
@@ -128,7 +128,7 @@ Clave inválida → `401`. Rate limit 60 llamadas por minuto por clave.
 
 ### 7.3 Proveedores (modo real)
 
-- **Twilio (SMS y WhatsApp)**: `POST https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json`, autenticación básica (`sid`:`token`), campos `To`, `From`, `Body`. WhatsApp: `To = 'whatsapp:+57...'`, `From = 'whatsapp:' + twilio.from_whatsapp`. Con cURL, tiempo máximo 10 s.
+- **Twilio (SMS y WhatsApp)**: `POST https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json`, autenticación básica (`sid`:`token`), campos `To`, `From`, `Body`. WhatsApp: `To = 'whatsapp:+58...'`, `From = 'whatsapp:' + twilio.from_whatsapp`. Con cURL, tiempo máximo 10 s.
 - **Meta WhatsApp Business API** (opcional, desactivada por defecto): `POST https://graph.facebook.com/v{version}/{phone_id}/messages` con plantillas aprobadas por Meta para mensajes iniciados por la empresa (requiere aprobación previa; fase 2).
 - **Correo**: PHPMailer 6.9 por SMTP (`smtp.*` de `config.php`), cuerpo en texto y HTML simple, asunto de la plantilla.
 - Nunca se registran tokens, claves ni el contenido completo del mensaje en `integraciones.log`.

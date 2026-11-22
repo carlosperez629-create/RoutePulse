@@ -59,7 +59,7 @@ Respuesta: `{ "aceptados": 12, "rechazados": [ { "indice": 3, "motivo": "captura
 Filtros: `zona_id`, `estado_senal`. Retorna una entrada por ruta `en_curso`:
 ```json
 { "ruta": { "id": 1, "codigo": "R-261113-01", "total_paradas": 5, "resueltas": 2, "zona_id": 1 },
-  "conductor": { "id": 1, "nombre": "Carlos Conductor", "telefono": "+57..." },
+  "conductor": { "id": 1, "nombre": "Carlos Conductor", "telefono": "+58..." },
   "vehiculo": { "id": 2, "placa": "MOT-001", "tipo": "motocicleta" },
   "posicion": { "lat": 4.633, "lng": -74.08, "velocidad_kmh": 28, "rumbo": 90, "bateria_pct": 80, "capturado_at": "...", "antiguedad_s": 45 },
   "estado_senal": "en_linea",

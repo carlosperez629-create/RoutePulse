@@ -19,13 +19,13 @@ Para simular GPS sin teléfono: enviar `POST gps/enviar.php` con coordenadas int
 ## E2E-01. Flujo feliz completo (paquete nuevo → entrega → KPIs)
 
 **Parte 1 (M3 + M7):**
-1. (Despachador) Crear un paquete en `hub/paquete_nuevo.php` con dirección en Zona Norte. → Se crea con guía `RP-…`, `creado`, coordenadas simuladas, zona Norte y token. Historial con 1 fila.
+1. (Despachador) Crear un paquete en `hub/paquete_nuevo.php` con dirección en San Francisco Norte. → Se crea con guía `RP-…`, `creado`, coordenadas simuladas, zona Norte y token. Historial con 1 fila.
 2. Escanear la guía con "Ingreso al HUB" (HUB 1). → `ingresado_hub`.
 3. Escanear con "Clasificar". → `en_clasificacion`.
 4. Imprimir la etiqueta. → QR y GS1-128 legibles con la guía.
 
 **Parte 2 (M1):**
-5. En `despacho/rutas.php`, "Generar rutas" (fecha de hoy, HUB 1, Zona Norte). → Aparece una ruta `borrador` con el paquete nuevo y el paquete 3 del seed, ordenadas, con ETA.
+5. En `despacho/rutas.php`, "Generar rutas" (fecha de hoy, HUB 1, San Francisco Norte). → Aparece una ruta `borrador` con el paquete nuevo y el paquete 3 del seed, ordenadas, con ETA.
 6. Asignar conductor 1 y vehículo y **Confirmar**. → Ruta `planificada`; ambos paquetes `asignado_ruta`. (Antes, finalizar o cancelar la ruta 1 del seed si el conductor 1 ya tiene ruta ese día; o usar el conductor 2.)
 
 **Parte 3 (M4 + M2):**

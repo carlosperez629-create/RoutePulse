@@ -1,0 +1,18 @@
+/* Monitor de flota (M2). El alto descuenta la barra de navegación de render_header (~56 px). */
+.monitor { display: flex; flex-direction: column; height: calc(100vh - 56px); background: var(--bs-body-bg); }
+.monitor:fullscreen { height: 100vh; }
+.monitor-cuerpo { flex: 1 1 auto; display: flex; min-height: 0; }
+.monitor-panel { width: 360px; max-width: 40%; overflow-y: auto; border-right: 1px solid var(--bs-border-color); flex: 0 0 auto; }
+.monitor-mapa { flex: 1 1 auto; min-width: 0; }
+.monitor-item { cursor: pointer; }
+.monitor-item.active { background: var(--bs-primary-bg-subtle); border-left: 4px solid var(--bs-primary); }
+.monitor-item:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: -2px; }
+
+/* Tableta y teléfono: el panel pasa arriba del mapa. */
+@media (max-width: 991.98px) {
+    .monitor-cuerpo { flex-direction: column; }
+    .monitor-panel { width: 100%; max-width: none; max-height: 40%; border-right: 0; border-bottom: 1px solid var(--bs-border-color); }
+}
+
+/* Playback (M2) */
+.playback-mapa { height: 55vh; min-height: 320px; }

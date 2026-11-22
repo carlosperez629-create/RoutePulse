@@ -14,6 +14,14 @@
     <meta name="rp-url-base" content="<?= e($urlBase) ?>">
     <meta name="rp-zona-horaria" content="<?= e($zonaHoraria) ?>">
     <meta name="rp-modulo" content="<?= e($modulo) ?>">
+<?php if ($modulo === 'm4'): ?>
+    <link rel="manifest" href="<?= e(rp_url('conductor/manifest.json')) ?>">
+    <meta name="theme-color" content="#0f766e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="<?= e(rp_asset('img/icon-192.png')) ?>">
+<?php endif; ?>
     <link rel="stylesheet" href="<?= e(rp_asset('vendor/bootstrap/bootstrap.min.css')) ?>">
     <link rel="stylesheet" href="<?= e(rp_asset('vendor/bootstrap-icons/bootstrap-icons.min.css')) ?>">
 <?php foreach ($vendorCss as $archivoVendor): ?>

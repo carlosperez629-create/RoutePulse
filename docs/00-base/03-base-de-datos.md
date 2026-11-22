@@ -70,7 +70,7 @@ Un paquete puede tener varias paradas a lo largo del tiempo (una por intento de 
 8. **Borrado**: no se borran paquetes, rutas, usuarios ni entregas. Se cancelan o se desactivan (`activo = 0`).
 9. **Archivos**: las firmas y fotos se guardan en `storage/uploads/` y en `archivos.ruta_relativa`. Nunca como BLOB en MySQL ni dentro de `public/`.
 10. **Coordenadas**: `DECIMAL(10,7)`; latitud entre -90 y 90, longitud entre -180 y 180.
-11. **Teléfonos**: se guardan en formato internacional sin espacios (`+573001234567`); validación `^\+?[0-9]{7,15}$`.
+11. **Teléfonos**: se guardan en formato internacional sin espacios (`+584121234567`); validación `^\+?[0-9]{7,15}$`.
 12. **Dinero**: `DECIMAL(12,2)`; la moneda en `moneda` (ISO 4217, 3 letras).
 
 ## 5. Índices y rendimiento

@@ -74,19 +74,36 @@ Toda la especificación está en `docs/`. **Leer antes de programar**; si algo n
 
 Para probar la app del conductor en un teléfono hace falta HTTPS (el navegador solo da GPS y cámara en contextos seguros). Detalles en `docs/00-base/08-configuracion-y-entorno.md`.
 
-### Usuarios de prueba (clave de todos: `Dev12345!`)
+### Roles, credenciales e interfaces
 
-| Rol | Correo |
-|---|---|
-| Administrador | admin@routepulse.test |
-| Despachador | despachador@routepulse.test |
-| Gerente | gerente@routepulse.test |
-| Conductor (ruta 1 en curso) | conductor1@routepulse.test |
-| Conductor (ruta 2 planificada) | conductor2@routepulse.test |
+Todos los roles con login entran por `login.php`. El rol `destinatario` no tiene usuario ni contraseña: accede solo con el enlace único de su paquete.
 
-Enlace de seguimiento de prueba: `/t/00000000000000000000000000000007`.
+**Credenciales de prueba**
 
-> Los usuarios y la clave de prueba son solo para desarrollo. En producción no se importa `seed.sql` o se cambian las cuentas.
+| Rol | Correo | Contraseña |
+|---|---|---|
+| Administrador (`admin`) | `admin@routepulse.test` | `Prueba12345` |
+| Despachador (`despachador`) | `despachador@routepulse.test` | `Dev12345!` |
+| Gerente (`gerente`) | `gerente@routepulse.test` | `Dev12345!` |
+| Conductor ruta 1 (`conductor`) | `conductor1@routepulse.test` | `Dev12345!` |
+| Conductor ruta 2 (`conductor`) | `conductor2@routepulse.test` | `Dev12345!` |
+| Destinatario (`destinatario`) | Sin login | Sin contraseña; usar `/t/00000000000000000000000000000007` |
+
+> En el ZIP de repositorio todas las cuentas de prueba usan `Dev12345!` porque vienen de `seed.sql`. En el ZIP privado, el administrador puede tener otra contraseña: el hash no se puede revertir. Las demás cuentas de prueba conservan `Dev12345!`.
+
+**Qué hace cada rol y a qué interfaces accede**
+
+Todas las rutas son relativas a `app.url`.
+
+| Rol | Qué hace | Interfaces principales |
+|---|---|---|
+| `admin` | Administra usuarios, roles, configuración e integraciones; tiene lectura y control de toda la operación. | `admin/usuarios.php`, `admin/auditoria.php`, `admin/configuracion.php`, `admin/integraciones.php`, `admin/notificaciones.php`, `hub/paquetes.php`, `hub/paquete_nuevo.php`, `hub/paquete_detalle.php`, `hub/escaneo.php`, `hub/etiqueta.php`, `hub/incidencias.php`, `hub/hubs.php`, `despacho/rutas.php`, `despacho/ruta_detalle.php`, `despacho/conductores.php`, `despacho/vehiculos.php`, `despacho/zonas.php`, `monitor/flota.php`, `monitor/playback.php`, `gerencia/dashboard.php`, `gerencia/mapa_calor.php`, `gerencia/reportes.php`, `cambiar_password.php` |
+| `despachador` | Opera el HUB y la última milla: paquetes, clasificación, rutas, incidencias, conductores, vehículos, zonas, notificaciones y monitor en vivo. | `monitor/flota.php`, `monitor/playback.php`, `despacho/rutas.php`, `despacho/ruta_detalle.php`, `despacho/conductores.php`, `despacho/vehiculos.php`, `despacho/zonas.php`, `hub/paquetes.php`, `hub/paquete_nuevo.php`, `hub/paquete_detalle.php`, `hub/escaneo.php`, `hub/etiqueta.php`, `hub/incidencias.php`, `hub/hubs.php` (solo lectura), `admin/notificaciones.php`, `cambiar_password.php` |
+| `gerente` | Consulta indicadores, reportes, costos, mapa de calor, playback, monitor y auditoría; no edita la operación. | `gerencia/dashboard.php`, `gerencia/mapa_calor.php`, `gerencia/reportes.php`, `monitor/flota.php`, `monitor/playback.php`, `admin/auditoria.php`, `hub/paquetes.php`, `hub/paquete_detalle.php`, `hub/incidencias.php`, `hub/hubs.php`, `despacho/rutas.php`, `despacho/ruta_detalle.php`, `cambiar_password.php`; `admin/notificaciones.php` solo por URL directa |
+| `conductor` | Usa la PWA móvil para ver solo su ruta, iniciar/finalizar, llegar a paradas, solicitar OTP, registrar entrega o fallo, subir firma/foto y enviar GPS. | `conductor/` (Mi ruta), `conductor/parada.php`, `cambiar_password.php` |
+| `destinatario` | Consulta el estado de su propio paquete y puede reprogramar la entrega; no ve datos internos ni de otros paquetes. | Portal público `/t/<token>` |
+
+> Los usuarios y contraseñas de prueba son solo para desarrollo. En producción no se importa `seed.sql` o se cambian las cuentas. El administrador no puede quitarse a sí mismo el rol `admin` ni desactivarse.
 
 ## Base de datos
 

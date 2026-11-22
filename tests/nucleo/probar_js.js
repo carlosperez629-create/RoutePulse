@@ -6,7 +6,7 @@ const ruta = require('path').join(__dirname, '..', '..', 'public', 'assets', 'js
 
 function crearEntorno(opts) {
     opts = opts || {};
-    const metas = { 'rp-url-base': 'http://x/rp', 'rp-zona-horaria': opts.zona || 'America/Bogota' };
+    const metas = { 'rp-url-base': 'http://x/rp', 'rp-zona-horaria': opts.zona || 'America/Caracas' };
     const avisos = [];
     const marcados = [];
     class Elemento {
@@ -40,7 +40,7 @@ async function prueba(nombre, fn) { try { await fn(); ok++; console.log('  OK  '
 (async () => {
     // ---- ui.js: formatos ----
     const u = crearEntorno({ fetch: async () => resp({}) }).v.ui;
-    await prueba('formatoFecha convierte UTC a la zona local (Bogotá UTC-5)', () => assert.strictEqual(u.formatoFecha('2026-11-13T15:04:05Z'), '13/11/2026 10:04'));
+    await prueba('formatoFecha convierte UTC a la zona local (San Francisco UTC-4)', () => assert.strictEqual(u.formatoFecha('2026-11-13T15:04:05Z'), '13/11/2026 11:04'));
     await prueba('formatoFecha cruza de día según la zona', () => assert.strictEqual(u.formatoFecha('2026-11-14T03:30:00Z'), '13/11/2026 22:30'));
     await prueba('formatoFecha con solo fecha (DATE) no se desplaza', () => assert.strictEqual(u.formatoFecha('2026-11-13'), '13/11/2026'));
     await prueba('formatoFecha null y basura -> "—"', () => { assert.strictEqual(u.formatoFecha(null), '—'); assert.strictEqual(u.formatoFecha('no es fecha'), '—'); });

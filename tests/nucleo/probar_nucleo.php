@@ -139,8 +139,8 @@ t('email: minúsculas y formato', function () {
 });
 
 t('telefono: normaliza separadores y valida largo', function () {
-    igual('+573001234567', validar(['t' => '+57 300-123 4567'], ['t' => 'telefono'])['t']);
-    igual('3001234567', validar(['t' => '(300) 123.4567'], ['t' => 'telefono'])['t']);
+    igual('+584121234567', validar(['t' => '+58 412-123 4567'], ['t' => 'telefono'])['t']);
+    igual('4121234567', validar(['t' => '(412) 123.4567'], ['t' => 'telefono'])['t']);
     falla_con('VALIDACION', fn() => validar(['t' => 'abc'], ['t' => 'telefono']), 't');
     falla_con('VALIDACION', fn() => validar(['t' => '123'], ['t' => 'telefono']), 't');
 });
@@ -262,7 +262,7 @@ t('geo_distancia_m()', function () {
     igual(0.0, geo_distancia_m(4.6, -74.0, 4.6, -74.0));
     $d = geo_distancia_m(0.0, 0.0, 0.0, 1.0);
     afirmar(abs($d - 111195) < 300, 'un grado de longitud en el ecuador ≈ 111,2 km (fue ' . round($d) . ')');
-    $corta = geo_distancia_m(4.6350, -74.0780, 4.6395, -74.0780);
+    $corta = geo_distancia_m(10.5824993,-71.6453662, 10.5869993,-71.6453662);
     afirmar($corta > 480 && $corta < 520, 'unos 500 m (fue ' . round($corta) . ')');
 });
 
@@ -527,7 +527,7 @@ if ($hayBd) {
         igual(25.0, config_get('eta_velocidad_media_kmh'));
         igual(true, config_get('otp_obligatorio'));
         igual(['whatsapp', 'sms', 'email'], config_get('canales_orden'));
-        igual('America/Bogota', config_get('zona_horaria_ui'));
+        igual('America/Caracas', config_get('zona_horaria_ui'));
         igual('z', config_get('clave_que_no_existe', 'z'));
 
         $original = config_get('otp_max_por_hora');
@@ -584,7 +584,7 @@ if ($hayBd) {
     $idPrueba = 0;
 
     t('usuario_crear(): crea, valida y rechaza duplicados', function () use ($correo, $clave, &$idPrueba) {
-        $idPrueba = usuario_crear(['rol' => 'despachador', 'nombre' => 'Prueba Núcleo', 'email' => $correo, 'password' => $clave, 'telefono' => '+570000000099']);
+        $idPrueba = usuario_crear(['rol' => 'despachador', 'nombre' => 'Prueba Núcleo', 'email' => $correo, 'password' => $clave, 'telefono' => '+584120000099']);
         afirmar($idPrueba > 0);
         $u = usuario_obtener($idPrueba);
         igual('despachador', $u['rol']);

@@ -1,0 +1,22 @@
+/* M5 - Portal del cliente (mobile first, pensado para 360 px) */
+.portal { max-width: 520px; margin: 0 auto; padding: 16px; font-size: 16px; }
+.portal-cabecera { text-align: center; padding: 8px 0 16px; }
+.portal-marca { font-weight: 700; color: #0d6efd; letter-spacing: .02em; }
+.portal-titulo { font-size: 1.35rem; margin: 4px 0; }
+.portal-guia { color: #495057; word-break: break-all; }
+.portal-tarjeta { background: #fff; border: 1px solid #dee2e6; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.portal-subtitulo { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+.portal-estado { display: inline-block; font-size: 1.4rem; font-weight: 700; padding: 8px 20px; border-radius: 999px; }
+.portal-mensaje { font-size: 1.05rem; margin: 12px 0 4px; }
+.portal-eta { font-weight: 600; margin: 4px 0 8px; }
+.portal-tarjeta .btn { min-height: 48px; margin-top: 12px; }
+.portal-mapa { height: 260px; width: 100%; border-radius: 8px; touch-action: pan-x pan-y; }
+.portal-linea { list-style: none; margin: 0; padding: 0; position: relative; }
+.portal-linea::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: #dee2e6; }
+.portal-linea li { position: relative; padding: 0 0 14px 30px; }
+.portal-linea li:last-child { padding-bottom: 0; }
+.portal-punto { position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #adb5bd; }
+.portal-linea .hito { font-weight: 600; }
+.portal-linea .fecha { display: block; font-size: .875rem; color: #6c757d; }
+.portal-pie { padding: 12px 0 24px; }
+.portal-punto-vehiculo { width: 22px; height: 22px; border-radius: 50%; background: #198754; border: 3px solid #fff; box-shadow: 0 0 0 2px #198754; }

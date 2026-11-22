@@ -298,7 +298,7 @@ t('GET auth/me.php con sesión: usuario, menú de 9 opciones y zona horaria', fu
     igual(9, count($d['menu']));
     igual('Usuarios', $d['menu'][0]['texto']);
     afirmar(str_ends_with($d['menu'][0]['url'], '/admin/usuarios.php'));
-    igual('America/Bogota', $d['zona_horaria_ui']);
+    igual('America/Caracas', $d['zona_horaria_ui']);
     igual($csrfAdmin, $d['csrf_token'], 'el token CSRF es el de la sesión');
 });
 

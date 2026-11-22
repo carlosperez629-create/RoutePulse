@@ -257,7 +257,7 @@ function rp_validar_valor(mixed $valor, array $p): mixed {
             $texto = rp_v_texto($valor, true);
             $texto = (string) preg_replace('/[\s\-\(\)\.]/', '', $texto);
             if (preg_match('/^\+?[0-9]{7,15}$/', $texto) !== 1) {
-                throw new RpValidacionCampo('Teléfono inválido. Usa formato internacional, por ejemplo +573001234567.');
+                throw new RpValidacionCampo('Teléfono inválido. Usa formato internacional, por ejemplo +584121234567.');
             }
             return $texto;
 
