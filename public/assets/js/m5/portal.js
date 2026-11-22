@@ -241,7 +241,7 @@
     // ---------------------------------------------------------------- comunicación
 
     async function pedir(url, opciones) {
-        const resp = await fetch(url, { cache: 'no-store', credentials: 'omit', ...opciones });
+        const resp = await fetch(url, { cache: 'no-store', credentials: 'same-origin', ...opciones });
         let json = null;
         try {
             json = await resp.json();

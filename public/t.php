@@ -143,6 +143,6 @@ $diasMax = (int) config_get('reprogramar_dias_max', 7);
 
 <script src="<?= e($base) ?>/assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="<?= e($base) ?>/assets/vendor/leaflet/leaflet.js"></script>
-<script src="<?= e($base) ?>/assets/js/m5/portal.js"></script>
+<script src="<?= e($base) ?>/assets/js/m5/portal.js?v=2"></script>
 </body>
 </html>
